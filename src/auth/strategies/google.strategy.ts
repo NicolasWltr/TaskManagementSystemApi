@@ -15,7 +15,7 @@ export class GoogleStrategy extends PassportStrategy(Strategy, 'google') {
         super({
             clientID: googleConfig.clientID!,
             clientSecret: googleConfig.clientSecret!,
-            callbackURL: 'http://localhost:3002/api/auth/google/callback',
+            callbackURL: process.env.DEV === "false" ? 'https://koop-games.walternicolas.de/api/auth/google/callback' : 'http://localhost:3002/api/auth/google/callback',
             scope: ['profile', 'email'],
             passReqToCallback: true,
         });

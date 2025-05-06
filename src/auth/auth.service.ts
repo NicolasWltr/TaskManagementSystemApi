@@ -54,6 +54,7 @@ export class AuthService {
         res.cookie('jwt', response.access_token, {
             httpOnly: true,
             secure: process.env.DEV === 'false',
+            domain: process.env.DEV === 'false' ? '.walternicolas.de' : undefined,
             sameSite: 'strict',
             maxAge: 3600 * 2000, // 1 week
         });
